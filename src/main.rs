@@ -1,4 +1,5 @@
 mod arrays;
+mod jsons;
 
 fn main() {
     // arrays::test1();
@@ -6,5 +7,8 @@ fn main() {
     // arrays::test3();
     // arrays::test4();
     // arrays::test5();
-    arrays::test6();
+    // arrays::test6();
+    
+    // jsons::test1();
 }
+
