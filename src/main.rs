@@ -1,7 +1,6 @@
 mod arrays;
 mod jsons;
 mod files;
-mod iterators;
 
 fn main() {
     // arrays::test1();
@@ -9,7 +8,17 @@ fn main() {
     // arrays::test3();
     // arrays::test4();
     // arrays::test5();
-    //arrays::test6();
+    // arrays::test6();
+
+    // jsons::test1();
+
+    // files::test1();
+    // files::test2();
+    //files::test3();
+
     let t: Vec<_> = iterators::people().take(10).collect();
-    println!("{:?}", t)
+    println!("{:?}", t);
+
+    files::writeFileDirty("dev.txt".as_ref(), jsons::getJsonBinary().as_ref());
 }
+
