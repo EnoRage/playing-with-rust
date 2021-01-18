@@ -1,5 +1,6 @@
 mod arrays;
 mod jsons;
+mod files;
 
 fn main() {
     // arrays::test1();
@@ -8,7 +9,11 @@ fn main() {
     // arrays::test4();
     // arrays::test5();
     // arrays::test6();
-    
+
     // jsons::test1();
+
+    // files::test1();
+    // files::test2();
+    files::test3();
 }
 
