@@ -1,6 +1,7 @@
 use rand::Rng;
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize,)]
 pub struct people {
     name: String,
     family: String,

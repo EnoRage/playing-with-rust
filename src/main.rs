@@ -17,9 +17,10 @@ fn main() {
     // files::test2();
     //files::test3();
 
-    let t: Vec<_> = iterators::people().take(10).collect();
-    println!("{:?}", t);
+    let people_vec: Vec<_> = iterators::people().take(1000).collect();
+    //println!("{:?}", t)
+    let json_peoples = serde_json::to_string(&people_vec).unwrap().into_bytes();
 
-    files::writeFileDirty("dev.txt".as_ref(), jsons::getJsonBinary().as_ref());
+    files::writeFileDirty("dev.txt".as_ref(), json_peoples.as_ref());
 }
 
