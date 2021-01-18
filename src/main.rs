@@ -1,7 +1,8 @@
-mod arrays;
-mod jsons;
+// mod arrays;
+// mod jsons;
 mod files;
 mod iterators;
+mod buff_files;
 
 fn main() {
     // arrays::test1();
@@ -22,5 +23,7 @@ fn main() {
     let json_peoples = serde_json::to_string(&people_vec).unwrap().into_bytes();
 
     files::writeFileDirty("dev.txt".as_ref(), json_peoples.as_ref());
+
+    buff_files::test2();
 }
 
