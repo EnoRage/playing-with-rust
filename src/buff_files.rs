@@ -16,6 +16,9 @@ use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 use std::fs::Metadata;
+use std::thread::sleep;
+use std::time::Duration;
+use std::io::Error;
 
 pub fn test2() -> io::Result<()> {
     let mut f = File::open("dev.txt")?;
@@ -31,13 +34,35 @@ pub fn test2() -> io::Result<()> {
 pub fn test3() {
     let mut f = File::open("dev.txt").unwrap();
 
+    let mut nf = File::create("new-dev.txt").unwrap();
+
     let f_len = f.metadata().unwrap().len();
+    let mut buffer = [0; 1000];
 
-    let mut buffer = [0; 100];
+    for x in (0..f_len).step_by(1000) {
+        let diff = f_len - x;
+        if (diff) < 1000 {
+            // let mut f = vec![0 as u8; diff as usize];
+            // let rf =&mut f[.. diff as usize];
+            f.read_exact(&mut buffer[..diff as usize]);
 
-    for x in (0..f_len).step_by(100) {
-        f.read_exact(&mut buffer[..]);
-        println!("The bytes: {:?}", &buffer[..]);
+            match nf.write(&mut buffer[..diff as usize]) {
+                Ok(_) => {println!("The bytes: {:?} were written", &mut buffer[..diff as usize])}
+                Err(_) => {}
+            };
+        }
+        else  {
+            f.read_exact(&mut buffer[..]);
+
+            match nf.write(&buffer) {
+                Ok(_) => {println!("The bytes: {:?} were written", &buffer[..])}
+                Err(_) => {}
+            };
+        }
+
+
+        // sleep(Duration::from_secs(1));
+        // println!("The bytes: {:?}", &buffer[..]);
     }
-
+    println!("finished")
 }

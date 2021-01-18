@@ -24,6 +24,6 @@ fn main() {
 
     files::writeFileDirty("dev.txt".as_ref(), json_peoples.as_ref());
 
-    buff_files::test2();
+    buff_files::test3();
 }
 
