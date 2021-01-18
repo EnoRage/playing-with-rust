@@ -65,33 +65,33 @@
 //     // println!("{:?}", &&result2[..]);
 //     // println!("{:?}", &&aa[..]); will be killed
 // }
-
-#[derive(Debug)]
-struct Animal {
-    name: String,
-    age: i32,
-}
-
-#[derive(Debug)]
-struct Cat {
-    animal: Animal,
-    status: String,
-}
-
-pub fn test6() {
-    let animals = vec![
-        Animal { name: String::from("Homyak"), age: 1 },
-        Animal { name: String::from("Starui ded"), age: 23 },
-        Animal { name: String::from("Default"), age: 23 },
-    ];
-
-    let cats = animals
-        .into_iter()
-        .map(|x| {
-            let age = x.age;
-            Cat { animal: x, status: String::from(if age > 1 { "dead" } else { "alive" }) }
-        })
-        .collect::<Vec<_>>();
-
-    println!("{:?}", cats.into_iter().filter(|cat| cat.status == "alive").collect::<Vec<Cat>>());
-}
+//
+// #[derive(Debug)]
+// struct Animal {
+//     name: String,
+//     age: i32,
+// }
+//
+// #[derive(Debug)]
+// struct Cat {
+//     animal: Animal,
+//     status: String,
+// }
+//
+// pub fn test6() {
+//     let animals = vec![
+//         Animal { name: String::from("Homyak"), age: 1 },
+//         Animal { name: String::from("Starui ded"), age: 23 },
+//         Animal { name: String::from("Default"), age: 23 },
+//     ];
+//
+//     let cats = animals
+//         .into_iter()
+//         .map(|x| {
+//             let age = x.age;
+//             Cat { animal: x, status: String::from(if age > 1 { "dead" } else { "alive" }) }
+//         })
+//         .collect::<Vec<_>>();
+//
+//     println!("{:?}", cats.into_iter().filter(|cat| cat.status == "alive").collect::<Vec<Cat>>());
+// }
