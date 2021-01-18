@@ -14,6 +14,6 @@ fn main() {
 
     // files::test1();
     // files::test2();
-    files::test3();
+    files::writeFileDirty("dev.txt".as_ref(), jsons::getJsonBinary().as_ref());
 }
 
