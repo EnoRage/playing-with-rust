@@ -1,10 +1,10 @@
-use crate::services::db::Database;
+use crate::services::db::DatabaseConnector;
 
 pub struct Postgres {
     url: String
 }
 
-impl Database<bool, String> for Postgres {
+impl DatabaseConnector<bool, String> for Postgres {
     fn connect(&mut self) -> Result<bool, String> {
         so(self.url.as_str());
         Ok(true)
