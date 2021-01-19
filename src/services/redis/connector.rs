@@ -1,5 +1,5 @@
 use crate::services::db::{DatabaseConnector, DatabaseCR};
-use redis::Commands;
+use redis::{Commands, RedisError, FromRedisValue, RedisResult};
 
 pub struct Redis {
     url: String,
@@ -22,18 +22,16 @@ impl DatabaseConnector<(), redis::RedisError> for Redis {
     }
 }
 
-impl DatabaseCR<String, Vec<u8>, String> for Redis {
-    fn get(&mut self, key: String) -> Result<Vec<u8>, String> {
-        let result = *self
-            .connection
-            .as_ref()
-            .unwrap()
-            .get::<String, Vec<u8>>(key);
-        Ok(result)
+impl DatabaseCR<String, String, RedisError> for Redis {
+    fn get(&mut self, key: String) -> Result<String, RedisError> {
+        let mut conn = self.connection.as_mut().unwrap();
+        let res: String = conn.get(key)?;
+        Ok(res)
     }
 
-    fn set(&mut self, key: String, value: Vec<u8>) -> Option<String> {
-        *self.connection.unwrap().set::<String, Vec<u8>, ()>(key, value);
+    fn set(&mut self, key: String, value: String) -> Option<RedisError> {
+        let mut conn = self.connection.as_mut().unwrap();
+        let res: RedisResult<()> = conn.set(key, value);
         None
     }
 }

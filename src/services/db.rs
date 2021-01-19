@@ -6,9 +6,9 @@ pub trait DatabaseConnector<T, E> {
     fn disconnect(&mut self) -> Result<T, E>;
 }
 
-pub trait DatabaseCR<TK, TV, E> {
-    fn get(&mut self, key: TK) -> Result<TV, E>;
-    fn set(&mut self, key: TK, value: TV) -> Option<E>;
+pub trait DatabaseCR<TKey, TValue, TError> {
+    fn get(&mut self, key: TKey) -> Result<TValue, TError>;
+    fn set(&mut self, key: TKey, value: TValue) -> Option<TError>;
 }
 
 
