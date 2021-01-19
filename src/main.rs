@@ -7,6 +7,8 @@
 // mod buff_files;
 // mod buff_files_with_tokio;
 
+mod services;
+
 // #[tokio::main]
 // async fn main() -> Result<(), Box<dyn Error>> {
 //     // arrays::test1();
@@ -37,5 +39,5 @@
 //
 
 fn main() {
-
+    services::db::init_and_connect();
 }
