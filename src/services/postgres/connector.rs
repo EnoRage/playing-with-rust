@@ -5,12 +5,12 @@ pub struct Postgres {
 }
 
 impl Database<bool, String> for Postgres {
-    fn connect(&self) -> Result<bool, String> {
+    fn connect(&mut self) -> Result<bool, String> {
         so(self.url.as_str());
         Ok(true)
     }
 
-    fn disconnect(&self) -> Result<bool, String> {
+    fn disconnect(&mut self) -> Result<bool, String> {
         Ok(true)
     }
 }
