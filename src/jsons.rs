@@ -32,7 +32,7 @@ pub(crate) struct Line {
 // //     println!("result of  {}", lined[0].desc);
 // // }
 //
-pub fn getJsonBinary() -> Vec<u8> {
+pub fn get_json_binary() -> Vec<u8> {
     let point1: Point = Point {x:1.0, y:2.0};
     let point2: Point = Point {x:3.0, y:4.0};
 

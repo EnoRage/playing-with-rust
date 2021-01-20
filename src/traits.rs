@@ -1,5 +1,3 @@
-
-
 struct PoolFactory {
     ProtocolID: String
 }

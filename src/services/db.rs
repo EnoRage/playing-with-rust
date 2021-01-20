@@ -2,7 +2,7 @@ use crate::services::postgres::connector as pg_connector;
 use crate::services::redis::connector as redis_connector;
 
 extern crate serde;
-use serde::{Serialize, Deserialize};
+
 use crate::jsons::Line;
 
 
@@ -25,7 +25,7 @@ pub fn init_and_connect() {
     rd.connect().unwrap();
     pg.connect().unwrap();
 
-    rd.set(String::from("test"), super::super::jsons::getJsonBinary());
+    rd.set(String::from("test"), super::super::jsons::get_json_binary());
 
 
     let v = rd.get(String::from("test")).unwrap();
