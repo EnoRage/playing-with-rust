@@ -1,7 +1,7 @@
 // use std::error::Error;
 
 // mod arrays;
-// mod jsons;
+pub mod jsons;
 // mod files;
 // mod iterators;
 // mod buff_files;
